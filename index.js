@@ -15,9 +15,9 @@ app.post("/events", (req, res) => {
   try {
     events.push(event);
     axios.post("htps://posts-cluster-service:4000/events", event);
-    // axios.post("htps://localhost:4001/events", event);
-    // axios.post("htps://localhost:4002/events", event);
-    // axios.post("htps://localhost:4003/events", event);
+    axios.post("htps://comments-service:4001/events", event);
+    axios.post("htps://query-service:4002/events", event);
+    axios.post("htps://moderation-service:4003/events", event);
   } catch (err) {
     console.log("ERRROR");
     console.log(err.message);
